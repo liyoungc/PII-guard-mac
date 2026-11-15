@@ -74,6 +74,11 @@ final class AppState: ObservableObject {
     func set(_ key: String, _ value: Any) {
         cfg[key] = value
         saveConfig()
+        // A setting changed while a review list is open: recompute what the list
+        // shows, so what is displayed is always what will be written.
+        if review != nil, ["mode", "mask_char"].contains(key) {
+            Task { await refreshPreview() }
+        }
     }
 
     func setCategory(_ key: String, _ on: Bool) {

@@ -91,7 +91,7 @@ private struct MaskTab: View {
         Form {
             Picker("人名遮蔽模式", selection: Binding(
                 get: { state.string("mode", "keep_surname") }, set: { state.set("mode", $0) })) {
-                ForEach(modeLabels, id: \.0) { Text($0.1).tag($0.0) }
+                ForEach(modeLabels(state.string("mask_char", "○")), id: \.0) { Text($0.1).tag($0.0) }
             }
             HStack {
                 TextField("遮蔽字元", text: Binding(

@@ -27,8 +27,8 @@ struct ReviewView: View {
             HStack {
                 Picker("遮蔽模式", selection: Binding(
                     get: { state.string("mode", "keep_surname") },
-                    set: { state.set("mode", $0); Task { await state.refreshPreview() } })) {
-                    ForEach(modeLabels, id: \.0) { Text($0.1).tag($0.0) }
+                    set: { state.set("mode", $0) })) {
+                    ForEach(modeLabels(state.string("mask_char", "○")), id: \.0) { Text($0.1).tag($0.0) }
                 }
                 .frame(maxWidth: 380)
                 Spacer()

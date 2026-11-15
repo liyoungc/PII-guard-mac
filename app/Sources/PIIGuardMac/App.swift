@@ -1,12 +1,16 @@
 import AppKit
 import SwiftUI
 
-let modeLabels: [(String, String)] = [
-    ("keep_surname", "留姓（王小明 → 王○○）"),
-    ("keep_surname_numbered", "留姓＋編號（同姓不同人可區分）"),
-    ("full", "全遮（王小明 → ○○○）"),
-    ("code", "代號（王小明 → 人員A）"),
-]
+/// Labels show the mask character that is actually configured, so the menu
+/// never promises one character while the output uses another.
+func modeLabels(_ m: String) -> [(String, String)] {
+    [
+        ("keep_surname", "留姓（王小明 → 王\(m)\(m)）"),
+        ("keep_surname_numbered", "留姓＋編號（同姓不同人可區分）"),
+        ("full", "全遮（王小明 → \(m)\(m)\(m)）"),
+        ("code", "代號（王小明 → 人員A）"),
+    ]
+}
 let categoryLabels: [(String, String)] = [
     ("person", "人名（需要模型）"),
     ("tw_id", "身分證／居留證字號"),
