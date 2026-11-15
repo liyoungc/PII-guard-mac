@@ -21,7 +21,7 @@ def split_surname(name: str) -> tuple[str, str]:
 
     TODO(owner): refine the judgement calls below — see README "Surname rules".
       * 4-character names: compound surname (歐陽小明) vs. married double
-        surname (陳林美玉 -> keep 陳? keep 陳林?). Default here: only a known
+        surname (王林美玉 -> keep 王? keep 王林?). Default here: only a known
         compound surname counts as 2 characters; otherwise keep 1.
       * Non-CJK names (John Smith): default keeps the first character only.
     """

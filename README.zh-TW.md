@@ -3,7 +3,7 @@
 [English](README.md) ｜ **繁體中文**
 
 在 Mac 上完全離線，把文件裡的人名去識別化的選單列（menu bar）小工具。
-原始用途是醫院病人安全通報文件：把「陳禮揚」換成「陳○○」，其餘內容與版面一個字都不動。
+原始用途是醫院病人安全通報文件：把「王小明」換成「王○○」，其餘內容與版面一個字都不動。
 
 - **完全在本機執行**：用 [Rapid-MLX](https://github.com/raullenchai/Rapid-MLX) 在 Apple Silicon 上跑開源模型，文件內容不會離開這台 Mac。
 - **模型只負責「找」，不負責「改」**：模型列出原文中的人名，取代由程式做。模型無法改寫你的文件。
@@ -34,6 +34,8 @@ open "$HOME/Applications/PII Guard.app"
 並用 Swift 建置 App、複製到 `~/Applications`。可重複執行。
 
 ### 給 AI agent 的安裝說明
+
+想讓 agent 一步一步帶你安裝並教你使用，把 [AGENT_PROMPT.zh-TW.md](AGENT_PROMPT.zh-TW.md) 的內容貼給它即可。
 
 請依序執行，每一步都有可檢查的結果：
 
@@ -81,10 +83,10 @@ open "$HOME/Applications/PII Guard.app"
 
 ### 遮蔽模式
 
-| 模式 | 陳禮揚 | 陳明 | 歐陽大華 |
+| 模式 | 王小明 | 王明 | 歐陽大華 |
 |---|---|---|---|
-| 留姓（預設） | 陳○○ | 陳○ | 歐陽○○ |
-| 留姓＋編號 | 同姓的不同人會變成 陳○○(1)、陳○○(2) | | |
+| 留姓（預設） | 王○○ | 王○ | 歐陽○○ |
+| 留姓＋編號 | 同姓的不同人會變成 王○○(1)、王○○(2) | | |
 | 全遮 | ○○○ | ○○ | ○○○○ |
 | 代號 | 人員A | 人員B | 人員C |
 
@@ -114,11 +116,11 @@ PG="$HOME/Library/Application Support/PII-guard-mac/venv/bin/piiguard"
 | 最低記憶體 | 模型 | 召回率 | 精確率 | 速度（字／秒） | 記憶體 | 下載大小 | 建議用於 |
 |---|---|---|---|---|---|---|---|
 | 8 GB | `mlx-community/Qwen3.5-2B-MLX-4bit` | 79.6% | 92.9% | 197 | 3.2 GB | 1.8 GB |  |
-| 8 GB | `mlx-community/gemma-4-e2b-it-4bit` | 100.0% | 98.0% | 224 | 4.92 GB | 3.6 GB | ✅ 8、16 GB |
+| 8 GB | `mlx-community/gemma-4-e2b-it-4bit` | 100.0% | 98.0% | 204 | 4.93 GB | 3.6 GB | ✅ 8、16 GB |
 | 16 GB | `mlx-community/Qwen3.5-4B-MLX-4bit` | 98.0% | 98.0% | 46 | 7.78 GB | 3.1 GB |  |
 | 16 GB | `mlx-community/gemma-4-e4b-it-4bit` | 98.0% | 100.0% | 117 | 6.54 GB | 5.2 GB |  |
 | 24 GB | `mlx-community/Qwen3.5-9B-6bit` | 98.0% | 98.0% | 33 | 13.0 GB | 8.2 GB |  |
-| 24 GB | `mlx-community/gemma-4-12B-it-4bit` | 100.0% | 100.0% | 38 | 8.94 GB | 6.8 GB | ✅ 24、32 GB |
+| 24 GB | `mlx-community/gemma-4-12B-it-4bit` | 100.0% | 100.0% | 34 | 8.36 GB | 6.8 GB | ✅ 24、32 GB |
 | 32 GB | `rapid-mlx/Qwen3.8-27B-4bit-MTP-MLX` | — | — | — | — | 16.3 GB |  |
 | 32 GB | `mlx-community/gemma-4-26b-a4b-it-4bit` | — | — | — | — | 15.4 GB |  |
 
@@ -147,7 +149,7 @@ PG="$HOME/Library/Application Support/PII-guard-mac/venv/bin/piiguard"
 ## 已知限制
 
 - 模型可能漏抓，尤其是兩個字的姓名、姓名中間有空白、以及較小的模型。
-- 只有姓氏加稱謂（「陳醫師」）不會被遮蔽。
+- 只有姓氏加稱謂（「王醫師」）不會被遮蔽。
 - 同一個姓名被拆在兩個段落或兩個儲存格時不會被認出。
 - 工作表名稱、圖表內的文字、圖片中的文字不會處理。
 - 白名單為完全相符比對。
@@ -155,7 +157,7 @@ PG="$HOME/Library/Application Support/PII-guard-mac/venv/bin/piiguard"
 ## 姓氏規則
 
 `engine/src/piiguard/surname.py` 決定「留姓」時留下哪幾個字：已知複姓（歐陽、司馬、范姜、張簡…）留兩個字，
-其餘留第一個字；冠夫姓（陳林美玉）目前只留第一個字。規則很短，歡迎依需要修改。
+其餘留第一個字；冠夫姓（王林美玉）目前只留第一個字。規則很短，歡迎依需要修改。
 
 ## 解除安裝
 

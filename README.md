@@ -4,7 +4,7 @@
 
 A menu bar app that removes personal names from documents, fully offline, on Apple Silicon.
 It was built for hospital patient-safety incident reports written in Traditional Chinese:
-`陳禮揚` becomes `陳○○`, and nothing else in the file changes.
+`王小明` becomes `王○○`, and nothing else in the file changes.
 
 - **Runs entirely on your Mac.** Open models are served by [Rapid-MLX](https://github.com/raullenchai/Rapid-MLX); document content never leaves the machine.
 - **The model finds, the program replaces.** The model only lists names that appear verbatim in the text. It cannot rewrite your document.
@@ -35,6 +35,8 @@ The script installs the Python engine and Rapid-MLX into an isolated environment
 then builds the app with Swift and copies it to `~/Applications`. It is safe to re-run.
 
 ### Instructions for AI agents
+
+For a guided install and walkthrough in Traditional Chinese, paste the prompt in [AGENT_PROMPT.zh-TW.md](AGENT_PROMPT.zh-TW.md) to your agent.
 
 Run these in order. Each step has a checkable result.
 
@@ -84,10 +86,10 @@ The app's interface is in Traditional Chinese.
 
 ### Masking modes
 
-| Mode | 陳禮揚 | 陳明 | 歐陽大華 |
+| Mode | 王小明 | 王明 | 歐陽大華 |
 |---|---|---|---|
-| Keep surname (default) | 陳○○ | 陳○ | 歐陽○○ |
-| Keep surname + number | different people with the same surname become 陳○○(1), 陳○○(2) | | |
+| Keep surname (default) | 王○○ | 王○ | 歐陽○○ |
+| Keep surname + number | different people with the same surname become 王○○(1), 王○○(2) | | |
 | Full mask | ○○○ | ○○ | ○○○○ |
 | Code | 人員A | 人員B | 人員C |
 
@@ -121,11 +123,11 @@ to remove in the review list.
 | Min RAM | Model | Recall | Precision | Speed (chars/s) | Memory | Download | Pick for |
 |---|---|---|---|---|---|---|---|
 | 8 GB | `mlx-community/Qwen3.5-2B-MLX-4bit` | 79.6% | 92.9% | 197 | 3.2 GB | 1.8 GB |  |
-| 8 GB | `mlx-community/gemma-4-e2b-it-4bit` | 100.0% | 98.0% | 224 | 4.92 GB | 3.6 GB | ✅ 8、16 GB |
+| 8 GB | `mlx-community/gemma-4-e2b-it-4bit` | 100.0% | 98.0% | 204 | 4.93 GB | 3.6 GB | ✅ 8、16 GB |
 | 16 GB | `mlx-community/Qwen3.5-4B-MLX-4bit` | 98.0% | 98.0% | 46 | 7.78 GB | 3.1 GB |  |
 | 16 GB | `mlx-community/gemma-4-e4b-it-4bit` | 98.0% | 100.0% | 117 | 6.54 GB | 5.2 GB |  |
 | 24 GB | `mlx-community/Qwen3.5-9B-6bit` | 98.0% | 98.0% | 33 | 13.0 GB | 8.2 GB |  |
-| 24 GB | `mlx-community/gemma-4-12B-it-4bit` | 100.0% | 100.0% | 38 | 8.94 GB | 6.8 GB | ✅ 24、32 GB |
+| 24 GB | `mlx-community/gemma-4-12B-it-4bit` | 100.0% | 100.0% | 34 | 8.36 GB | 6.8 GB | ✅ 24、32 GB |
 | 32 GB | `rapid-mlx/Qwen3.8-27B-4bit-MTP-MLX` | — | — | — | — | 16.3 GB |  |
 | 32 GB | `mlx-community/gemma-4-26b-a4b-it-4bit` | — | — | — | — | 15.4 GB |  |
 
@@ -154,7 +156,7 @@ The numbers are raw model output, before the whitelist and human review. To re-m
 ## Known limitations
 
 - The model can miss names, especially two-character names, names with spaces inside, and with smaller models.
-- A surname with a title only (`陳醫師`, "Dr. Chen") is not masked.
+- A surname with a title only (`王醫師`, "Dr. Wang") is not masked.
 - A name split across two paragraphs or two cells is not recognised.
 - Sheet names, text inside charts, and text inside images are not processed.
 - The whitelist matches exact strings only.
@@ -163,7 +165,7 @@ The numbers are raw model output, before the whitelist and human review. To re-m
 
 `engine/src/piiguard/surname.py` decides which characters survive in the keep-surname modes: known
 compound surnames (歐陽, 司馬, 范姜, 張簡 …) keep two characters, everything else keeps one; a married
-double surname (陳林美玉) currently keeps only the first. The function is a few lines long and meant to be edited.
+double surname (王林美玉) currently keeps only the first. The function is a few lines long and meant to be edited.
 
 ## Uninstall
 

@@ -2,10 +2,10 @@ import AppKit
 import SwiftUI
 
 let modeLabels: [(String, String)] = [
-    ("keep_surname", "留姓（陳禮揚 → 陳○○）"),
+    ("keep_surname", "留姓（王小明 → 王○○）"),
     ("keep_surname_numbered", "留姓＋編號（同姓不同人可區分）"),
-    ("full", "全遮（陳禮揚 → ○○○）"),
-    ("code", "代號（陳禮揚 → 人員A）"),
+    ("full", "全遮（王小明 → ○○○）"),
+    ("code", "代號（王小明 → 人員A）"),
 ]
 let categoryLabels: [(String, String)] = [
     ("person", "人名（需要模型）"),

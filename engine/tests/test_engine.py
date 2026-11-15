@@ -24,23 +24,23 @@ def cfg(**kw):
 
 # ---- masking -----------------------------------------------------------
 @pytest.mark.parametrize("name,expected", [
-    ("王小明", ("王", "小明")), ("陳明", ("陳", "明")), ("歐陽大華", ("歐陽", "大華")),
-    ("陳林美玉", ("陳", "林美玉")), ("John Smith", ("J", "ohn Smith")),
+    ("王小明", ("王", "小明")), ("王明", ("王", "明")), ("歐陽大華", ("歐陽", "大華")),
+    ("王林美玉", ("王", "林美玉")), ("John Smith", ("J", "ohn Smith")),
 ])
 def test_split_surname(name, expected):
     assert split_surname(name) == expected
 
 
 def test_modes():
-    ents = P("王小明", "王大同", "歐陽大華", "陳明")
+    ents = P("王小明", "王大同", "歐陽大華", "王明")
     assert build_replacements(ents, "keep_surname", "○") == {
-        "王小明": "王○○", "王大同": "王○○", "歐陽大華": "歐陽○○", "陳明": "陳○"}
+        "王小明": "王○○", "王大同": "王○○", "歐陽大華": "歐陽○○", "王明": "王○"}
     numbered = build_replacements(ents, "keep_surname_numbered", "○")
     assert numbered["王小明"] == "王○○(1)" and numbered["王大同"] == "王○○(2)"
-    assert numbered["陳明"] == "陳○"  # no collision, no number
+    assert numbered["王明"] == "王○"  # no collision, no number
     assert build_replacements(ents, "full", "Ｏ")["歐陽大華"] == "ＯＯＯＯ"
     assert build_replacements(ents, "code", "○") == {
-        "王小明": "人員A", "王大同": "人員B", "歐陽大華": "人員C", "陳明": "人員D"}
+        "王小明": "人員A", "王大同": "人員B", "歐陽大華": "人員C", "王明": "人員D"}
 
 
 def test_non_person_always_fully_masked():
@@ -158,7 +158,7 @@ def test_scan_filters_hallucinations_titles_and_whitelist(tmp_path, monkeypatch)
     monkeypatch.setattr(pipeline.server, "connection", lambda: {"model": "stub", "port": 0, "key": ""})
     monkeypatch.setattr(pipeline.server, "status", lambda: {"state": "ready"})
     monkeypatch.setattr(detect, "ask_model",
-                        lambda conn, w: ["王小明醫師", "林美玲", "行政", "急診科", "張不存在", "陳"])
+                        lambda conn, w: ["王小明醫師", "林美玲", "行政", "急診科", "張不存在", "王"])
     c = cfg(blacklist=["家屬"])
     c["categories"]["tw_id"] = True
     res = pipeline.scan(str(src), c)

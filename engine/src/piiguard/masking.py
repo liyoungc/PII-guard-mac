@@ -5,10 +5,10 @@ from .surname import split_surname
 
 MODES = ("keep_surname", "keep_surname_numbered", "full", "code")
 MODE_LABELS = {
-    "keep_surname": "留姓（陳禮揚 → 陳○○）",
-    "keep_surname_numbered": "留姓＋編號（同姓不同人：陳○○(1)、陳○○(2)）",
-    "full": "全遮（陳禮揚 → ○○○）",
-    "code": "代號（陳禮揚 → 人員A）",
+    "keep_surname": "留姓（王小明 → 王○○）",
+    "keep_surname_numbered": "留姓＋編號（同姓不同人：王○○(1)、王○○(2)）",
+    "full": "全遮（王小明 → ○○○）",
+    "code": "代號（王小明 → 人員A）",
 }
 
 

@@ -35,9 +35,9 @@
         "distract-1:柯惠雪莉"
       ],
       "errors": 0,
-      "chars_per_sec": 224,
-      "memory_gb": 4.92,
-      "load_seconds": 8.1,
+      "chars_per_sec": 204,
+      "memory_gb": 4.93,
+      "load_seconds": 9.8,
       "gold_names": 49,
       "documents": 20
     },
@@ -93,9 +93,9 @@
       "missed": [],
       "false_alarms": [],
       "errors": 0,
-      "chars_per_sec": 38,
-      "memory_gb": 8.94,
-      "load_seconds": 0.0,
+      "chars_per_sec": 34,
+      "memory_gb": 8.36,
+      "load_seconds": 9.5,
       "gold_names": 49,
       "documents": 20
     }
