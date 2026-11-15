@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.build/
+build/
+dist/
+*.app
+.DS_Store
+# never commit real documents
+local-test/
+*.xls

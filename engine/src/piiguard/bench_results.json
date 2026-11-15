@@ -1,0 +1,112 @@
+{
+  "models": {
+    "mlx-community/Qwen3.5-2B-MLX-4bit": {
+      "recall": 0.796,
+      "precision": 0.929,
+      "missed": [
+        "signoff:歐陽志明",
+        "signoff:葉淑惠",
+        "signoff:江柏宏",
+        "signoff:高翔",
+        "signoff:方怡君",
+        "two-char:溫馨",
+        "two-char:丁浩",
+        "two-char:石磊",
+        "repeat:邱郁婷",
+        "blood:傅雅雯"
+      ],
+      "false_alarms": [
+        "surname-title:護理長",
+        "english:Dr. Wang",
+        "blood:雅雯"
+      ],
+      "errors": 0,
+      "chars_per_sec": 197,
+      "memory_gb": 3.2,
+      "load_seconds": 6.1,
+      "gold_names": 49,
+      "documents": 20
+    },
+    "mlx-community/gemma-4-e2b-it-4bit": {
+      "recall": 1.0,
+      "precision": 0.98,
+      "missed": [],
+      "false_alarms": [
+        "distract-1:柯惠雪莉"
+      ],
+      "errors": 0,
+      "chars_per_sec": 224,
+      "memory_gb": 4.92,
+      "load_seconds": 8.1,
+      "gold_names": 49,
+      "documents": 20
+    },
+    "mlx-community/Qwen3.5-4B-MLX-4bit": {
+      "recall": 0.98,
+      "precision": 0.98,
+      "missed": [
+        "two-char:溫馨"
+      ],
+      "false_alarms": [
+        "english:Wang"
+      ],
+      "errors": 0,
+      "chars_per_sec": 46,
+      "memory_gb": 7.78,
+      "load_seconds": 6.2,
+      "gold_names": 49,
+      "documents": 20
+    },
+    "mlx-community/gemma-4-e4b-it-4bit": {
+      "recall": 0.98,
+      "precision": 1.0,
+      "missed": [
+        "two-char:石磊"
+      ],
+      "false_alarms": [],
+      "errors": 0,
+      "chars_per_sec": 117,
+      "memory_gb": 6.54,
+      "load_seconds": 7.9,
+      "gold_names": 49,
+      "documents": 20
+    },
+    "mlx-community/Qwen3.5-9B-6bit": {
+      "recall": 0.98,
+      "precision": 0.98,
+      "missed": [
+        "two-char:溫馨"
+      ],
+      "false_alarms": [
+        "english:Wang"
+      ],
+      "errors": 0,
+      "chars_per_sec": 33,
+      "memory_gb": 13.0,
+      "load_seconds": 8.2,
+      "gold_names": 49,
+      "documents": 20
+    },
+    "mlx-community/gemma-4-12B-it-4bit": {
+      "recall": 1.0,
+      "precision": 1.0,
+      "missed": [],
+      "false_alarms": [],
+      "errors": 0,
+      "chars_per_sec": 38,
+      "memory_gb": 8.94,
+      "load_seconds": 0.0,
+      "gold_names": 49,
+      "documents": 20
+    }
+  },
+  "measured_on": "Apple M4 Pro, 24 GB, rapid-mlx 1.0.3, 2026-11-15",
+  "recommended": {
+    "8": "mlx-community/gemma-4-e2b-it-4bit",
+    "16": "mlx-community/gemma-4-e2b-it-4bit",
+    "24": "mlx-community/gemma-4-12B-it-4bit",
+    "32": "mlx-community/gemma-4-12B-it-4bit"
+  },
+  "notes_zh": "語料只有 49 個人名，相差一兩個名字不具統計意義。8 GB 的建議未在真正的 8 GB 機器上驗證；32 GB 級距的兩個大模型尚未實測，暫以 24 GB 的建議代替。",
+  "notes_en": "The corpus has only 49 names; a difference of one or two names is not significant. The 8 GB pick was not verified on a real 8 GB machine. The two large 32 GB-tier models are not measured yet; the 24 GB pick stands in."
+}
