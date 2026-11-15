@@ -136,7 +136,7 @@ How the picks were made: recall first, then whether the memory footprint leaves 
 
 - The corpus has only 49 names, so a difference of one or two names is not significant. The detection prompt was also adjusted after failures on this same corpus, so the numbers are optimistic.
 - The 8 GB pick (about 4.9 GB) was not verified on a real 8 GB machine; close other large apps when using it. If memory is too tight, use `Qwen3.5-2B` (about 3.2 GB, but it misses more).
-- The two large 32 GB-tier models are not measured yet; the 24 GB pick stands in.
+- The two large 32 GB-tier models could not be measured on the 24 GB test machine (they need about 18 GB of GPU memory and Rapid-MLX's preflight check refuses them); the 24 GB pick stands in. Measurements from a 32 GB+ machine are welcome.
 - On this task a bigger model is not automatically more accurate.
 
 The numbers are raw model output, before the whitelist and human review. To re-measure:

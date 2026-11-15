@@ -107,6 +107,6 @@
     "24": "mlx-community/gemma-4-12B-it-4bit",
     "32": "mlx-community/gemma-4-12B-it-4bit"
   },
-  "notes_zh": "語料只有 49 個人名，相差一兩個名字不具統計意義。8 GB 的建議未在真正的 8 GB 機器上驗證；32 GB 級距的兩個大模型尚未實測，暫以 24 GB 的建議代替。",
-  "notes_en": "The corpus has only 49 names; a difference of one or two names is not significant. The 8 GB pick was not verified on a real 8 GB machine. The two large 32 GB-tier models are not measured yet; the 24 GB pick stands in."
+  "notes_zh": "語料只有 49 個人名，相差一兩個名字不具統計意義。8 GB 的建議未在真正的 8 GB 機器上驗證；32 GB 級距的兩個大模型需要約 18 GB 的 GPU 記憶體，量測用的 24 GB 機器被 Rapid-MLX 的載入前檢查擋下，無法實測，暫以 24 GB 的建議代替。",
+  "notes_en": "The corpus has only 49 names; a difference of one or two names is not significant. The 8 GB pick was not verified on a real 8 GB machine. The two large 32 GB-tier models need about 18 GB of GPU memory; Rapid-MLX's preflight check refuses them on the 24 GB test machine, so they could not be measured and the 24 GB pick stands in."
 }
